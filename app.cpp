@@ -1,4 +1,3 @@
-#include "inferxlite.h"
 #include <opencv2/core/core.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
@@ -153,9 +152,6 @@ void printImage(Mat img, int first_num)
 
 int main(int argv, char ** argc)
 {
-  char path[1000]={"./"};
-  inferx_init(path);
-
   printf("[imread]\n");
   Mat img = imread(argc[1]);
   if(img.data == NULL)
@@ -212,17 +208,6 @@ int main(int argv, char ** argc)
   embed_image(img_new, embeded_img, (input_w-img_new_w)/2, (input_h-img_new_h)/2);
   printf("[finished preprocess]\n");
   printImage(embeded_img, 0);//embeded_img.cols*embeded_img.rows*embeded_img.channels());
-
-  // initialize inferxlite context and load model
-  inferx_context ctx1;
-  printf("start load model\n");
-  inferx_load("YOLOv2", "dn_1_3_288_288", &ctx1);
-
-  // run model and release context
-  printf("start run model\n");
-  inferx_run(ctx1, (float *)embeded_img.data);
-  printf("finished\n");
-  inferx_clear(ctx1);
 
   return 0;
 }

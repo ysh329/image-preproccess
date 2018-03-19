@@ -169,6 +169,9 @@ void printImage(Mat img, int first_num)
 
 int main(int argv, char ** argc)
 {
+    int model_input_width = 416;
+    int model_input_height = 416;
+
     if (argv != 2) 
     {
         printf("Usage: %s INPUT_IMAGE_PATH\n", argc[0]);
@@ -200,8 +203,8 @@ int main(int argv, char ** argc)
      **********************/
     // resize image with short side (equal scaling scale)
     printf("[resize] resize with short side\n");
-    int input_w = 640; // model input
-    int input_h = 480; // model input
+    int input_w = model_input_width; // model input
+    int input_h = model_input_height; // model input
     int img_new_w, img_new_h;
     // first caculate the new height and width
     if (((float)input_w/float_img.cols) < ((float)input_h/float_img.rows)) {

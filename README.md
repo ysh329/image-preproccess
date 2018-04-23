@@ -1,7 +1,5 @@
-# image-preproccess
+# image-proccess
 
-This repositary exists the image preproccess methods for image of different deep learning frameworks.
+This repositary exists the image proccess methods for image of different deep learning frameworks.
 
 # Darknet
-
-
